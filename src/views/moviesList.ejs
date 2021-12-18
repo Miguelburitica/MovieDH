@@ -1,0 +1,15 @@
+<%- include("./partials/header.ejs")  %> 
+
+    <h1>LISTADO DE PELÍCULAS</h1>
+    <ul>
+        <% for( let i = 0; i < movies.length; i++ ) { %>
+        <li>
+            <a href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
+            <form action="/movies/delete/<%= movies[i].id %>?_method=DELETE" method="POST">
+                <button type="submit">Borrar</button>
+            </form>
+        </li>
+        <% } %>
+
+    </ul>
+    <%- include("./partials/footer.ejs")  %> 

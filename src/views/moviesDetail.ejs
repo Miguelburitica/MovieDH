@@ -1,0 +1,22 @@
+<%- include("./partials/header.ejs") %>
+<h1><%= movie.title %></h1>
+<div>
+	<p>Rating: <%= movie.rating %></p>
+	<p>Awards: <%= movie.awards %></p>
+	<p>Length: <%= movie.length + ' min'%></p>
+	<p>
+		Release date: <%= "publicada el año " + movie.release_date.getFullYear() + " del mes " +
+		(movie.release_date.getMonth() + 1) + ' del día ' + (movie.release_date.getDate() + 1) %>
+	</p>
+	<% if (movie.genero !== null) { %>
+	<p>Genre: <%= movie.genero.name %></p>
+	<% } else { %>
+	<p>Genre</p>
+	<% } %> <% if (movie.actores[0] !== null) { %> <% let i = 1; movie.actores.forEach(actor => { %>
+	<p>Actor<%=i + ' ' + actor.first_name + ' ' + actor.last_name %></p>
+	<% i++; }) %> <% } %>
+	<a href="/movies/create">Agregar</a>
+	<a href="/movies/update/<%= movie.id %>">Modificar</a>
+	<a href="/movies/delete/<%= movie.id %>">Borrar</a>
+</div>
+<%- include("./partials/footer.ejs") %>

@@ -1,0 +1,89 @@
+<%- include("./partials/header.ejs") %>
+
+<form method="post" action="/movies/create">
+	<label for="title">Titulo</label>
+	<input
+		type="text"
+		name="title"
+		id="title"
+		value="<%= locals.old !== undefined && errors.title === undefined ? locals.old.title : ''%> "
+	/>
+	<% if (locals.errors && errors.title) { %>
+	<span class="error"><%= errors.title.msg %> </span>
+	<% } else if(locals.errors){ %>
+	<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+	<% } else {%>
+	<span class="error" style="color: inherit"></span>
+	<% } %>
+	<label for="rating">Rating</label>
+	<input
+		type="number"
+		name="rating"
+		id="rating"
+		value="<%= locals.old !== undefined && errors.rating === undefined ? locals.old.rating : ''%>"
+	/>
+	<% if (locals.errors && errors.rating) { %>
+	<span class="error"><%= errors.rating.msg %> </span>
+	<% } else if(locals.errors){ %>
+	<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+	<% } else {%>
+	<span class="error" style="color: inherit"></span>
+	<% } %>
+	<label for="awards">Premios</label>
+	<input
+		type="number"
+		name="awards"
+		id="awards"
+		value="<%= locals.old !== undefined && errors.awards ? old.awards : ''%>"
+	/>
+	<% if (locals.errors && errors.awards) { %>
+	<span class="error"><%= errors.awards.msg %> </span>
+	<% } else if(locals.errors){ %>
+	<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+	<% } else {%>
+	<span class="error" style="color: inherit"></span>
+	<% } %>
+	<label for="release_date">Fecha de lanzamiento</label>
+	<input
+		type="date"
+		name="release_date"
+		id="release_date"
+		value="<%= locals.old !== undefined && errors.release_date ? old.release_date : ''%>"
+	/>
+	<% if (locals.errors && errors.release_date) { %>
+	<span class="error"><%= errors.release_date.msg %> </span>
+	<% } else if(locals.errors){ %>
+	<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+	<% } else {%>
+	<span class="error" style="color: inherit"></span>
+	<% } %>
+	<label for="length">Duración en minutos</label>
+	<input
+		type="number"
+		name="length"
+		id="length"
+		value="<%= locals.old !== undefined && errors.length ? old.length : ''%>"
+	/>
+	<% if (locals.errors && errors.lenght) { %>
+	<span class="error"><%= errors.lenght.msg %> </span>
+	<% } else if(locals.errors){ %>
+	<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+	<% } else {%>
+	<span class="error" style="color: inherit"></span>
+	<% } %>
+	<label for="genre">Género de la peli</label>
+	<select name="genre">
+		<% if (locals.genres !== undefined) { %> <% genres.forEach(genre => { %>
+		<option value="<%= genre.name %>"><%= genre.name %></option>
+		<% }) %> <% } %>
+	</select>
+	<!-- <% if (locals.errors && errors.genre) { %>
+	<span class="error"><%= errors.genre.msg %> </span>
+	<% } else if(locals.errors){ %>
+	<span class="error" style="color: rgba(87, 133, 108, 0.5)">Listop <i class="far fa-check-circle"></i></span>
+	<% } else {%>
+	<span class="error" style="color: inherit"></span>
+	<% } %> -->
+	<button type="submit">Crear</button>
+</form>
+<%- include("./partials/footer.ejs") %>

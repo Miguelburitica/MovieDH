@@ -1,0 +1,12 @@
+<%- include("./partials/header.ejs")  %>    
+    <h1><%= genre.name %> </h1>
+    <br>
+    <p>NAME: <%= genre.name %> </p>
+    <p>RANKIG: <%= genre.ranking %> </p>
+    <% if (genre.peliculas[0] !== null) { %>
+        <% let i = 1; genre.peliculas.forEach(movie => { %> 
+            <p>movie<%=i + ' ' + movie.title %></p>
+        <% i++; }) %> 
+    <% } %>
+
+    <%- include("./partials/footer.ejs")  %> 

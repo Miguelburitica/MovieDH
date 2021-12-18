@@ -1,0 +1,24 @@
+<%- include("./partials/header.ejs")  %> 
+
+    <form method="POST" action="/movies/update/<%= movie.id %>?_method=PUT">
+        <label for="title">Titulo</label>
+        <input type="text" name="title" id="title" value="<%= movie.title %>">
+        <label for="rating">Rating</label>
+        <input type="number" name="rating" id="rating" value="<%= movie.rating %>">
+        <label for="awards">Premios</label>
+        <input type="number" name="awards" id="awards" value="<%= movie.awards %>">
+        <label for="release_date">Fecha de lanzamiento</label>
+        <input type="date" name="release_date" id="release_date" value="<%= movie.release_date%>">
+        <label for="length">Duración en minutos</label>
+        <input type="number" name="length" id="length" value="<%= movie.length %>">
+        <label for="genre">Género de la peli</label>
+        <select name="genre" >
+            <% if (locals.genres !== undefined) { %>
+                <% genres.forEach(genre => { %>
+                    <option value="<%= genre.name %>" <%= genre.name == movie.genero.name ? "selected" : '' %>><%= genre.name %></option>
+                <% }) %> 
+            <% } %>
+        </select>
+        <button type="submit">Editar</button>
+    </form>
+    <%- include("./partials/footer.ejs")  %> 

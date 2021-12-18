@@ -1,0 +1,8 @@
+<%- include("./partials/header.ejs") %>
+
+<h1>Vas a eliminar <%= movie.title %>, estás seguro?</h1>
+<form action="/movies/delete/<%= movie.id %>?_method=DELETE" method="POST">
+	<button type="submit">Borrar</button>
+</form>
+
+<%- include("./partials/footer.ejs") %>

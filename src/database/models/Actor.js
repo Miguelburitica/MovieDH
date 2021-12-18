@@ -33,7 +33,7 @@ module.exports = (sequelize, dataType) => {
     const Actor = sequelize.define('Actores', cols, config)
 
     Actor.associate = function(modelos){
-        Actor.belongsToMany(modelos.Peliculas, {
+        Actor.belongsToMany(modelos.Pelicula, {
             as: "peliculas",
             through: "actor_movie",
             foreignKey: "actor_id",

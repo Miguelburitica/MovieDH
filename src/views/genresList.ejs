@@ -1,9 +1,9 @@
 <%- include("./partials/header.ejs")  %> 
 
     <h1>LISTADO DE GENEROS</h1>
-    <ul>
+    <ul class="list">
         <% for( let i = 0; i < genres.length; i++ ) { %>
-        <li>
+        <li class="card">
             <a href="/genres/detail/<%= genres[i].id %>"><%= genres[i].name %></a>
         </li>
         <% } %>

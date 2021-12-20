@@ -1,6 +1,6 @@
 <%- include("./partials/header.ejs") %>
 <h1><%= movie.title %></h1>
-<div>
+<div class="content">
 	<p>Rating: <%= movie.rating %></p>
 	<p>Awards: <%= movie.awards %></p>
 	<p>Length: <%= movie.length + ' min'%></p>
@@ -12,11 +12,17 @@
 	<p>Genre: <%= movie.genero.name %></p>
 	<% } else { %>
 	<p>Genre</p>
-	<% } %> <% if (movie.actores[0] !== null) { %> <% let i = 1; movie.actores.forEach(actor => { %>
-	<p>Actor<%=i + ' ' + actor.first_name + ' ' + actor.last_name %></p>
-	<% i++; }) %> <% } %>
-	<a href="/movies/create">Agregar</a>
-	<a href="/movies/update/<%= movie.id %>">Modificar</a>
-	<a href="/movies/delete/<%= movie.id %>">Borrar</a>
+	<% } %> 
+	<h4>Actores</h4>
+	<ul class="list">
+		<% if (movie.actores[0] !== null) { %> 
+			<% let i = 1; movie.actores.forEach(actor => { %>
+				<li><%=actor.first_name + ' ' + actor.last_name %></li>
+			<% i++; }) %> 
+		<% } %>
+	</ul>
+	<a href="/movies/create" class="button create">Agregar <i class="fas fa-plus-circle"></i></a>
+	<a href="/movies/update/<%= movie.id %>" class="button edit">Modificar</a>
+	<a href="/movies/delete/<%= movie.id %>" class="button delete">Borrar</a>
 </div>
 <%- include("./partials/footer.ejs") %>
